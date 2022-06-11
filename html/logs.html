@@ -5,9 +5,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Logs</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        font-family: sans-serif;
+        background-color: rgb(235, 235, 242);
+        color: #000;
+      }
+      #home {
+        float: right;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      #home:hover {
+        color: red;
+      }
+      #main-heading {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      #sub-heading {
+        font-weight: 700;
+        /* margin: 10px 70px; */
+        margin-left: 20px;
+      }
+      .sub-cont {
+        line-height: 2;
+        margin-left: 30px;
+        font-weight: 500;
+      }
+      .responsive {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
   </head>
   <body>
-    <div><a href="./index.html">HomePage</a></div>
-    Logs
+    <div><a href="../index.html" id="home">HomePage</a></div>
+    <div>
+      <h1 id="main-heading">Log4j is a logging framework written in java</h1>
+      <p class="sub-cont">Add log4j dependency from mvn repo</p>
+      <img
+        class="responsive"
+        src="../images/log4j-dependency.png"
+        alt="log4j dependency"
+      />
+      <p class="sub-cont">
+        Two jars will get added log4j-api-version , log4j-core-version in maven
+        dependencies
+      </p>
+    </div>
+    <div>
+      <h3 class="sub-cont">A brief explanation of log42.xml file</h3>
+      <img
+        class="responsive"
+        src="../images/log4j2.png"
+        alt="log4j2-explanation"
+      />
+      <p class="sub-cont">
+        Now go to project build path --> source --> Add Folder ---> select the
+        resources folder at the project level --> ok --> Apply and close now our
+        java class will have knowledge of log4j2.xml file
+      </p>
+
+      <p class="sub-cont">
+        Now to get logs ,create a class and create a static log variable
+      </p>
+      <p class="sub-cont">
+        private static Logger log = LogManager.getLogger(Demo1.class.getName());
+      </p>
+    </div>
+    <div>
+      <h3 id="sub-heading">Different log levels</h3>
+
+      <p class="sub-cont">
+        log.error() - to log when elements are not displayed in the page or if
+        any validations fail
+      </p>
+      <p class="sub-cont">
+        log.debug() - each selenium action is performed like click,
+        sendkeys,getText
+      </p>
+      <p class="sub-cont">
+        log.info() - when operation is successfully completed ex:after loading
+        page or after any successful validations ,it is just counter part to
+        log.error()
+      </p>
+      <p class="sub-cont">log.fatal() - severe errors that crash application</p>
+      <p class="sub-cont">
+        log.warn() - to information regarding unexpected system behaviour
+      </p>
+    </div>
+    <div>
+      <h3 id="sub-heading">A basic demo of class with log4j</h3>
+      <img class="responsive" src="../images/log4jDemo.png" alt="DemoClass" />
+      <p class="sub-cont"></p>
+      <img class="responsive" src="../images/log4j2Demo.png" alt="xmlfile" />
+    </div>
   </body>
 </html>

@@ -5,9 +5,178 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maven</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        font-family: sans-serif;
+        background-color: rgb(235, 235, 242);
+        color: #000;
+      }
+      #home {
+        float: right;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      #home:hover {
+        color: red;
+      }
+      #main-heading {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      #sub-heading {
+        font-weight: 700;
+        /* margin: 10px 70px; */
+        margin-left: 20px;
+      }
+      .sub-cont {
+        line-height: 2;
+        margin-left: 30px;
+        font-weight: 500;
+      }
+      .responsive {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
   </head>
   <body>
-    <div><a href="./index.html">HomePage</a></div>
-    Maven
+    <div><a href="../index.html" id="home">HomePage</a></div>
+    <div>
+      <h1 id="main-heading">
+        Apache Maven is a software project management and build management tool
+        for java frameworks
+      </h1>
+      <h3 id="sub-heading">Lets see Why Maven is needed in our project</h3>
+      <p class="sub-cont">
+        Maven acts as a Central repository to get all dependencies and helps to
+        maintain a common structure
+      </p>
+      <p class="sub-cont">We can easily integrate with CI tools like Jenkins</p>
+    </div>
+
+    <div>
+      <h3 id="sub-heading">Configure Maven</h3>
+      <p class="sub-cont">
+        go to
+        <a href="https://maven.apache.org/download.cgi">Download link </a> and
+        download apache-maven-version-bin.zip[like apache-maven-3.8.5-bin.zip]
+        file and extract it
+      </p>
+      <p class="sub-cont">copy path upto before bin folder</p>
+      <p class="sub-cont">
+        Now go to Environment variables in your system - System Variables -
+        Click on New
+      </p>
+      <p class="sub-cont">provide as below</p>
+      <img
+        class="responsive"
+        src="../images/maven-config.png"
+        alt="maven-env-var"
+      />
+      <p class="sub-cont">
+        Now copy the maven bin folder path and add in path variables
+      </p>
+      <img
+        class="responsive"
+        src="../images/maven-path-bin.png"
+        alt="maven bin path"
+      />
+      <p class="sub-cont">Now go to command prompt and check: mvn --version</p>
+      <p class="sub-cont">
+        If maven is installed successfully and env variables provided are proper
+        , u will see as in below image
+      </p>
+      <img
+        class="responsive"
+        src="../images/mvn-version.png"
+        alt="version-check"
+      />
+    </div>
+    <div>
+      <h3 id="sub-heading">
+        Lets start understanding the creation of Maven project in eclipse
+      </h3>
+      <p class="sub-cont">
+        Go to Eclipse - Select New - Other - maven project - either u can skip
+        archetype selection or select it as maven-archetype-quickstart
+      </p>
+      <p class="sub-cont">
+        Then provide GroupdId: is like OrganisationName ArtifactId: whatever we
+        provide here will be our project name
+      </p>
+      <p class="sub-cont">Click Finish</p>
+      <p class="sub-cont">
+        We will get a ready made maven project template. pom.xml is the most
+        important file in a maven project because all the depedencies ,with
+        their specific versions are maintained in it
+      </p>
+    </div>
+    <div>
+      <h3 id="sub-heading">
+        Execute all testcases in maven project . We use maven surefire plugin
+      </h3>
+      <img class="responsive" src="../images/surefire.png" alt="surefire" />
+
+      <p class="sub-cont">
+        Once we write our testcases , and a important point is inorder to
+        recognise testcases by maven testclass names must end with Test
+      </p>
+      <p class="sub-cont">
+        Once done with testcase scripting , we can go to the command prompt , to
+        project path pom.xml must be at project level>
+      </p>
+      <p class="sub-cont">enter command : mvn clean</p>
+      <p class="sub-cont">
+        we get BUILD Success [if there were previous executions , then it will
+        go and clean previous executions]
+      </p>
+      <p class="sub-cont">enter command : mvn complie</p>
+      <p class="sub-cont">[to check compilation errors/syntax errors]</p>
+      <p class="sub-cont">enter command: mvn test</p>
+      <p class="sub-cont">
+        [if mvn compile is not done , before mvn test then it will compiles and
+        then executes , also checks for all the dependencies to be present in
+        .m2 folder]
+      </p>
+    </div>
+    <div>
+      <h3 id="sub-heading">Integration of Maven with TestNG.xml file</h3>
+      <p class="sub-cont">Modify the surefire plugin as below</p>
+      <img
+        class="responsive"
+        src="../images/surefire-testng.png"
+        alt="surefireTestNG"
+      />
+    </div>
+
+    <div>
+      <h3 id="sub-heading">To run a specific testcase</h3>
+      <p class="sub-cont">mvn -Dtest=TestCaseName test</p>
+    </div>
+
+    <div>
+      <h3 id="sub-heading">Maven Profiling</h3>
+      <p class="sub-cont">
+        In real time we have multiple testng.xml files , like one for Regression
+        , one for Smoke , ... for this we will use profiles inside pom.xml file
+      </p>
+      <img
+        class="responsive"
+        src="../images/maven-profiling.png"
+        alt="Maven profiling"
+      />
+      <p class="sub-cont">
+        to run use : mvn test -Pprofilename , P means profile
+      </p>
+      <p class="sub-cont">example: mvn test -PRegression</p>
+    </div>
   </body>
 </html>

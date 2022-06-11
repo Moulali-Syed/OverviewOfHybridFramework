@@ -5,8 +5,91 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ExtentReports</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        font-family: sans-serif;
+        background-color: rgb(235, 235, 242);
+        color: #000;
+      }
+      #home {
+        float: right;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      #home:hover {
+        color: red;
+      }
+      #main-heading {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      #sub-heading {
+        font-weight: 700;
+        /* margin: 10px 70px; */
+        margin-left: 20px;
+      }
+      .sub-cont {
+        line-height: 2;
+        margin-left: 30px;
+        font-weight: 500;
+      }
+      .responsive {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .responsive1 {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      span {
+        color: red;
+      }
+    </style>
   </head>
   <body>
-    <div><a href="./index.html">HomePage</a></div>
+    <div><a href="../index.html" id="home">HomePage</a></div>
+    <div>
+      <h1 id="main-heading">
+        Lets understand ExtentReporting with a simple testcase
+      </h1>
+      <p class="sub-cont">Add the extent report dependency into pom.xml</p>
+      <img
+        src="../images/extentReportDependency.png"
+        alt="extent report dependency"
+        class="responsive"
+      />
+      <p class="sub-cont">
+        When ever dealing with extentreports 2 classes must be remembered :
+        <span>ExtentReports , ExtentSparkReporter</span>
+      </p>
+      <p class="sub-cont">
+        Look in the below image and read comments , we have created object for
+        both classes
+      </p>
+      <p class="sub-cont">
+        We defined a path variable for reports ,passed it to ExtentSparkReporter
+        , using ExtentSparkReporter object we have set the document title and
+        name
+      </p>
+      <p class="sub-cont">To ExtentReports we attached the reporter</p>
+      <img
+        class="responsive1"
+        src="../images/ExtentReport.png"
+        alt="reporting"
+      />
+    </div>
   </body>
 </html>

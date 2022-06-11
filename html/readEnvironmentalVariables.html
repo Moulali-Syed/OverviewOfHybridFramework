@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Environmental Variables</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        font-family: sans-serif;
+        background-color: rgb(235, 235, 242);
+        color: #000;
+      }
+      #home {
+        float: right;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      #home:hover {
+        color: red;
+      }
+      #main-heading {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .comm {
+        padding-left: 20px;
+        padding-bottom: 8px;
+      }
+      .const {
+        background-color: #fff;
+        width: 70%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div><a href="../index.html" id="home">HomePage</a></div>
+    <div>
+      <h1 id="main-heading">
+        Lets see how we can drive global environment values from external files
+        to tests in java
+      </h1>
+      <p class="comm">
+        Create a file with .properties extensions , example data.properties
+      </p>
+      <p class="comm">
+        say we have browser , url of application to be driven from this
+        properties file
+      </p>
+      <p class="comm">properties file should look as below</p>
+      <pre>
+        browser=chrome
+        url=https://demowebsite.com
+      </pre>
+    </div>
+
+    <div>
+      <p class="comm">Step1: Create a java file</p>
+      <p class="comm">
+        We have Properties class in Java under util package, define object of
+        that method
+      </p>
+      <p class="comm">Step2:Read the Properties file</p>
+      <p class="comm">
+        To read file use FileInputStream , create object of it and pass
+        .properties file path as a parameter to it
+      </p>
+      <p class="comm">
+        Step3:Load the file using object of Properties class and now we call the
+        properties from .properties file using getProperty
+      </p>
+      <p class="comm">Now lets look into code</p>
+      <pre class="const">
+        public class GlobalValuesDrive {
+          public static void main(String[] args) throws IOException {
+            //step1
+            Properties prop = new Properties();
+            //step2
+            FileInputStream fis = new FileInputStream(
+                "C:\\Testing\\SeleniumJava\\FrameworkBasics\\TestNGTutorial\\src\\data.properties");
+            //step3
+            prop.load(fis);
+            System.out.println(prop.getProperty("browser"));
+          }
+        }
+
+      </pre>
+    </div>
+  </body>
+</html>

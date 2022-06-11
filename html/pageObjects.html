@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PageObjectModel</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        font-family: sans-serif;
+        background-color: rgb(235, 235, 242);
+        color: #000;
+      }
+      #home {
+        float: right;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      #home:hover {
+        color: red;
+      }
+      #main-heading {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .obj {
+        padding-left: 20px;
+        background-color: #fff;
+        width: 70%;
+        margin: 0 auto;
+      }
+      #step {
+        font-weight: bold;
+      }
+      #sub-heading {
+        font-weight: 700;
+        margin: 10px 70px;
+      }
+      .sub-cont {
+        line-height: 2;
+        margin-left: 20px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div><a href="../index.html" id="home">HomePage</a></div>
+
+    <div>
+      <h1 id="main-heading">Page Object Model</h1>
+      <p class="sub-cont">
+        Advantages of POM: as all the element locators are seperated and placed
+        based on web pages , this makes maintenance easy , increase readability
+        of testcases
+      </p>
+      <p class="sub-cont">
+        Create two packages as objectRepository and testcases .Inside
+        objectRepository create page classes
+      </p>
+    </div>
+    <div>
+      <pre class="obj">
+package objectrepository;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class RediffLoginpage {
+
+
+	WebDriver driver;
+	
+	public Loginpage(WebDriver driver) {
+		this.driver = driver;
+	}
+ <p id="step">//1.create private variables and store the element locators</p> 
+	private By username = By.xpath(".//*[@id='login']");
+
+	private By password = By.name("passwd");
+	
+	private By go = By.name("proceed");
+	
+ <p id="step"> //2.define public methods to access the webElements </p>
+	public WebElement emailId() {
+		return driver.findElement(username);
+	}
+	
+	public WebElement password() {
+		return driver.findElement(password);
+	}
+	
+	public WebElement go() {
+		return driver.findElement(go);
+	}
+}
+
+
+
+package testcases;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import objectrepository.RediffLoginpage;
+
+public class LoginApplication {
+
+	@Test
+	public void login() {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://websiteurl.com");
+		
+   <p id="step">//accessing web elements from pageClass by creating object of pageClass and passing driver instance</p>
+		Loginpage loginPage = new Loginpage(driver);
+		loginPage.emailId().sendKeys("hello");
+		loginPage.password().sendKeys("hello123@");
+		loginPage.go().click();
+	}
+}
+      </pre>
+    </div>
+
+    <div>
+      <h3 id="sub-heading">FactoryDesignPattern</h3>
+      <pre class="obj">
+  public class LoginpagePageFactory {
+
+	WebDriver driver;
+
+	public LoginpagePageFactory(WebDriver driver) {
+		this.driver = driver;
+    <p id="step">//We must write this step when ever using PageFactory pattern  ----(1)</p>
+		PageFactory.initElements(driver, this);
+	}
+
+  <p id="step">//use @FindBy annotation and provide selector = "locator" --------(2)</p>
+	@FindBy(xpath = ".//*[@id='login']")
+	WebElement username;
+
+	@FindBy(name = "passwd")
+	WebElement password;
+
+	@FindBy(name = "proceed")
+	WebElement go;
+
+	public WebElement emailId() {
+		return username;
+	}
+
+	public WebElement password() {
+		return password;
+	}
+
+	public WebElement go() {
+		return go;
+	}
+}
+      </pre>
+    </div>
+  </body>
+</html>

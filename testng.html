@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./testng.css" />
+    <title>TestNG</title>
+  </head>
+  <body>
+    <div><a href="./index.html" id="home">HomePage</a></div>
+    
+    <h1 id="main-heading">TestNG - Test Next Generation</h1>
+
+    <p id="sub-heading">
+      TestNG is a unit Testing framework which helps in controlling testcase
+      execution from testng xml file , lets see the most used topics from testng
+      in a framework
+    </p>
+    <p id="sub-heading">
+      Create a Maven Project and add dependency or add testNG eclipse plugin [To
+      check if testNG plugin is installed in eclispe go to Windows - Preferences -Search
+      TestNg]
+    </p>
+
+    <h3 class="sub-heading">TestNG Annotations</h3>
+
+    <div>
+      <pre>
+        @Test 
+            instead of main method of java we can use this to write test scripts in testNg we can differentiate testcases by simply using the @Test annotation , this differentiate the testcases
+
+      </pre>
+    </div>
+
+       <p class="annot">These are testng.xml level annotations , that is they depend on suite tag , test tag in testng.xml file</p>
+    <div class="parent">
+      <div class="child">
+        <pre>
+
+      @BeforeSuite
+                The code inside this will run first inside a test suite
+
+      @AfterSuite
+                The code inside this will run after entire suite is completed
+    </pre
+        >
+      </div>
+      <div class="child">
+        <pre>
+
+      @BeforeTest
+                This will run before test folder
+
+      @AfterTest
+                This will run after test folder
+    </pre
+        >
+      </div>
+      </div>
+   <hr >
+   <p class="annot">These depends on class and test methods</p>
+      <div class="parent">
+      <div class="child">
+        <pre>
+
+      @BeforeMethod
+                method annotated with this tag will run before every @Test method
+
+      @AfterMethod
+                method annotated with this tag will run after every @Test method
+    </pre
+        >
+      </div>
+      <div class="child">
+        <pre>
+
+      @BeforeClass
+                method annotated with this tag will run before anything get executed from a class
+
+      @AfterClass
+                method annotated with this tag will run after everything get executed from a class
+    </pre
+        >
+      </div>
+      </div>
+    </div>
+    <img src="./OrderOfExecutionTestNG.png" alt="OrderOfExecution" class="responsive">
+
+<hr >
+    <h3 class="sub-heading">Helper Attributes</h3>
+
+    <div>
+      <p class="cont">Testcases will execute based on alphabetical order in testNG by default</p>
+      <p class="cont">We can control the execution using different helper attributes </p>
+      <p class="cont">Suppose we have 2 tests , HomePageTest and LoginPageTest ,HomePageTest depends on LoginPageTest 
+
+        Then we can specify the 
+        <pre>
+          @Test(<span class="help">dependsOnMethods</span>= {"LoginPageTest"})
+	        public void HomePageTest() {
+		           //code here
+	        }
+        </pre>
+        <p class="cont">If a method depends on multiple methods then we can use below syntax</p>
+        <pre>
+          @Test(<span class="help">dependsOnMethods</span>= {"LoginPageTest","TestMethodName"})
+	        public void HomePageTest() {
+		           //code here
+	        }
+        </pre>
+      </p>
+    </div>
+
+    <div>
+      <p class="cont">If we know there is a bug already reported for a test method , we can disable it</p>
+      <pre>
+        @Test(<span class="help">enabled = false</span>)
+	      public void demo() {
+		    //code
+      	}
+      </pre>
+    </div>
+
+    <div>
+      <p class="cont">If we want some testcase to wait before throwing error we can use timeOut</p>
+      <pre>
+        @Test(<span class="help">timeOut=4000</span>)
+	      public void SecondTest() {
+		        //code
+	      }
+      </pre>
+    </div>
+
+    <div>
+      <p class="cont">If we want to specify priority to test methods we can do it using @priority</p>
+      <p class="cont">We can have negative , 0 , positive value as priority , the lowest number gets highest priority</p>
+      <pre>
+        @Test(<span class="help">priority = 1</span>)
+        public void myTestCaseWithPriority() {
+            try {
+              System.out.println("I am in my first testcase with priority=1");
+            } catch (Exception e) {
+        }
+      }
+      </pre>
+    </div>
+<hr>
+
+<h3 class="sub-heading">Running tests through testng.xml</h3>
+<div>
+  <p class="cont">We can run all the test cases at a time using testng.xml - RightClick on testng.xml file ,Run as testNG Suite</p>
+<p class="cont">we can seperate a suite into multiple test with different classes and organize our testng.xml file</p>
+<img class="responsive" src="./OrganizeTests.png" alt="organize test">
+
+<p class="cont">We can include and exclude testcases </p>
+<img class="responsive" src="./exclude.png" alt="Exclude test">
+<p class="cont"></p>
+<img class="responsive" src="./include.png" alt="include test">
+</div>
+<div>
+  <p class="cont">We can also include test methods that start with a particular name using the regular expression</p>
+  <img class="responsive" src="./regex.png" alt="regex">
+</div>
+
+<div>
+  <p class="cont">We can run whole code from a package using below syntax</p>
+  <img class="responsive" src="./package.png" alt="package">
+</div>
+
+<div>
+  <p class="cont">We can also run testcases by tagging them </p>
+  <pre>
+       @Test(groups= {"Smoke"})
+	     public void Demo() {
+		        System.out.println("Hey There");
+	     }
+  </pre>
+  <img class="responsive" src="./groups.png" alt="groups">
+</div>
+
+
+<div>
+  <p class="cont">We can send parameters from testNG.xml file to test methods </p>
+  <pre>
+          @Parameters({"URL"})
+	  @Test
+	  public void Demo1(String urlName) {
+		    System.out.println("Hey There");
+		    System.out.println(urlName);
+	  }
+  </pre>
+  <img class="responsive" src="./parameter.png" alt="parameter">
+</div>
+
+<div>
+  <h4 class="sub-heading">Data Provider</h4>
+  <p class="cont">To run same testcase with multiple data sets we can use dataProvider
+</p>
+<pre>
+
+        @Test(dataProvider = "getData")
+	public void loginWithMultipleIds(String username, String password) {
+		System.out.println(username);
+		System.out.println(password);
+	}
+
+	@DataProvider
+	public Object[][] getData() {
+
+		// step1: create multi dimensional array
+		Object[][] data = new Object[3][2];
+		// step2
+		data[0][0] = "firstusername";
+		data[0][1] = "password";
+		data[1][0] = "secondusername";
+		data[1][1] = "password2";
+		data[2][0] = "thirdusername";
+		data[2][1] = "password3";
+
+		// step3
+		return data;
+
+	}
+</pre>
+</div>
+
+<div>
+  <h4 class="sub-heading">TestNg Listeners</h4>
+  <p class="cont">These are listeners that will run after some testcase got failed
+listeners will invoke method based on if testcase is passed or failed
+</p>
+
+<pre>
+      //step1 : create a class ListenersConifg
+      we have ITestListener , which is an interface that has all the methods for the testNG listeners
+
+      //step2: this class implements ITestListener
+      //step3: right click --> source --> override/implement methods
+
+
+      //step4:we must provide the Listeners class location in testng.xml file , after suite tag , before test tag
+      <img class ="responsive" src="./listeners.png" alt="listeners"/>
+
+      thus whatever we define inside the @Override methods will run based on test success and failure
+
+
+      To know which testcase is getting failed we can know using the result parameter
+      @Override
+	    public void onTestFailure(ITestResult result) {
+		    //prints failed testcase name
+		    System.out.println("Failed testcase name is :" + result.getName());
+    	}
+
+</pre>
+</div>
+
+<div>
+  <h3 class="sub-heading">Running Tests in parallel </h3>
+  <p class="cont"> we can specify  parallel="tests" thread-count="2" , thread-count can be any number of testcases , test tags
+   at the suite tag and test tag to run in parallel
+  </p>
+</div>
+
+<div>
+  <p class="cont">TestNG also provides default reports, after executing test cases we can see the folder test-output , inside it we have index.html file,take the entire path
+and paste it in browser , we can see the testng generated default report</p>
+</div>
+
+<div>
+  <a href="#main-heading" id="home">Go to Top</a>
+</div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+  font-family: sans-serif;
+  background-color: rgb(235, 235, 242);
+  color: darkblue;
+}
+
+#main-heading {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.brief-intro {
+  line-height: 2;
+  margin-left: 20px;
+}
+
+#sub-heading {
+  font-weight: 700;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-bottom: 40px;
+}
+
+.content-links a {
+  line-height: 2.2;
+  text-decoration: none;
+
+  display: block;
+
+  margin-left: 40px;
+}
+
+a:hover {
+  color: red;
+}

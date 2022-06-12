@@ -4,10 +4,172 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        font-family: sans-serif;
+        background-color: rgb(235, 235, 242);
+        color: #000;
+      }
+      #home {
+        float: right;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      #home:hover {
+        color: red;
+      }
+      #main-heading {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      #sub-heading {
+        font-weight: 700;
+        /* margin: 10px 70px; */
+        margin-left: 20px;
+      }
+      .sub-cont {
+        line-height: 2;
+        margin-left: 30px;
+        font-weight: 500;
+      }
+      .responsive {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .responsive1 {
+        width: 100%;
+        max-width: 900px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
     <title>Jenkins</title>
   </head>
   <body>
-    <div><a href="./index.html">HomePage</a></div>
-    Jenkins
+    <div><a href="../index.html" id="home">HomePage</a></div>
+    <div>
+      <h1 id="main-heading">Jenkins</h1>
+      <p class="sub-cont">
+        In order to run our testcases daily at scheduled time , we can use
+        jenkins in our automation project
+      </p>
+      <p class="sub-cont">
+        Go to Jenkins download link
+        <a href="https://www.jenkins.io/download/" target="_blank">Jenkins</a>
+        and download jenkins.war file based on your OS
+      </p>
+      <p class="sub-cont">
+        Once downloaded , go to command prompt ,go to jenkins.war file location
+        using : cd jenkins.warDirectoryPath
+      </p>
+      <p class="sub-cont">
+        Enter the command :
+        <span> java -jar jenkins.war -httpPort=8080 </span> and press enter
+      </p>
+      <p class="sub-cont">We will get a message as below</p>
+      <p class="sub-cont">
+        Jenkins initial setup is required. An admin user has been created and a
+        password generated. Please use the following password to proceed to
+        installation: 47d3ed1820c84612a14091e59b9806bf
+      </p>
+      <p class="sub-cont">
+        This may also be found at:
+        C:\Users\MOULALI\.jenkins\secrets\initialAdminPassword
+      </p>
+      <p class="sub-cont">
+        Now go to browser and open localhost 8080 , give the admin password
+        which ever u get as password as in above step , and click on custom
+        download
+      </p>
+      <p class="sub-cont">
+        Create admin user providing username ,password ,fullName , emailId
+      </p>
+      <p class="sub-cont">Now we can use jenkins at http://localhost:8080/</p>
+      <p class="sub-cont">
+        Once jenkins is configured we can see the dashboard page , click on
+        Manage Jenkins
+      </p>
+      <img
+        class="responsive"
+        src="../images/jenkins.png"
+        alt="manage-jenkins"
+      />
+      <p class="sub-cont">Click on Global Tool Configuration</p>
+      <img class="responsive" src="../images/toolconfig.png" alt="config" />
+      <p class="sub-cont">Click on JDK Installations</p>
+      <img class="responsive" src="../images/jdkInstall.png" alt="jdkInstall" />
+      <p class="sub-cont">
+        Provide the java path , we used for java configuration JAVA_HOME
+      </p>
+      <img class="responsive" src="../images/jdk.png" alt="jdk" />
+
+      <p class="sub-cont">
+        Scroll down , Click on Maven Installations and provide maven path
+      </p>
+      <img class="responsive" src="../images/maven.png" alt="maven" />
+      <p class="sub-cont">Click on Save</p>
+      <p class="sub-cont">
+        Lets copy our selenium project and place in the jenkins home directory
+      </p>
+      <p class="sub-cont">
+        C:\Users\MOULALI\.jenkins - paste project in this path now jenkins will
+        check it is present in jenkins home directory
+      </p>
+      <p class="sub-cont">
+        Lets see how we can run our code present in our local machine
+      </p>
+      <p class="sub-cont">Come to Jenkins dashboard , click on New Item</p>
+      <img class="responsive" src="../images/newitem.png" alt="new Item" />
+      <p class="sub-cont">
+        provide any name to this job as MavenJob - Select FreeStyleProject and
+        click on OK
+      </p>
+      <img class="responsive" src="../images/freestyle.png" alt="freestyle" />
+      <p class="sub-cont">
+        In general tab , click on advanced and check mark Use custom Workspace
+        and provide the project path , present in Jenkins Home Directory
+      </p>
+      <img
+        class="responsive"
+        src="../images/generalJenkins.png"
+        alt="jenkinsGeneral"
+      />
+      <p class="sub-cont">
+        Now go to Build Environment and Click on Invoke top level maven target
+        and provide maven goal based on maven profile
+      </p>
+      <img
+        class="responsive"
+        src="../images/maventarget.png"
+        alt="maven target"
+      />
+      <p class="sub-cont">Click on Save. Click on Build Now</p>
+      <img class="responsive" src="../images/build.png" alt="buildNow" />
+      <p class="sub-cont">Click on link from the Build History</p>
+      <img
+        class="responsive"
+        src="../images/buildHistory.png"
+        alt="build history"
+      />
+      <p class="sub-cont">Now go to Console Output and check the results</p>
+      <img
+        class="responsive1"
+        src="../images/jenkinsOutput.png"
+        alt="jenkins"
+      />
+    </div>
+    <div>
+      <a id="home" href="#">Go to top</a>
+    </div>
   </body>
 </html>

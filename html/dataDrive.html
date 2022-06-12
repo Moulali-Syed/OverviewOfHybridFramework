@@ -4,9 +4,104 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        font-family: sans-serif;
+        background-color: rgb(235, 235, 242);
+        color: #000;
+      }
+      #home {
+        float: right;
+        padding: 12px;
+        margin-bottom: 10px;
+      }
+      #home:hover {
+        color: red;
+      }
+      #main-heading {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      #sub-heading {
+        font-weight: 700;
+        /* margin: 10px 70px; */
+        margin-left: 20px;
+      }
+      .sub-cont {
+        line-height: 2;
+        margin-left: 30px;
+        font-weight: 500;
+      }
+      .list {
+        line-height: 1.5;
+        margin-left: 60px;
+      }
+      .responsive {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .responsive1 {
+        width: 100%;
+        max-width: 900px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
     <title>DataDriven</title>
   </head>
   <body>
-    <div><a href="./index.html">HomePage</a></div>
+    <div><a href="../index.html" id="home">HomePage</a></div>
+    <h1 id="main-heading">TestNG DataProvider with Excel</h1>
+    <p class="sub-cont">
+      Lets understand a basic scenario how we can get data from excel and pass
+      it to dataProvider and drive our testcase with multiple sets of data
+    </p>
+    <p class="sub-cont">
+      We need Apache POI dependencies to work with excel , make sure both are of
+      same version [poi , poi-ooxml]
+    </p>
+    <img
+      class="responsive"
+      src="../images/apachepoi.png"
+      alt="apache dependencies"
+    />
+    <p class="sub-cont">To work with excel 4 classes we must keep in mind</p>
+    <ul class="list">
+      <li>XSSFWorkbook - to access the excel workbook</li>
+      <li>XSSFSheet - to access the excel sheet</li>
+      <li>XSSFRow - to access rows from a sheet</li>
+      <li>XSSFCell - to access cell data from rows</li>
+    </ul>
+    <p class="sub-cont">
+      We will create object of these classes to work with excel , as we have
+      multiple testcases that needs data from excel ,its always better to have
+      excel handling code in a utility class so it can be reused in all
+      testcases
+    </p>
+    <img class="responsive" src="../images/getrowCount.png" alt="getRowCount" />
+    <img class="responsive" src="../images/cellCount.png" alt="cellCount" />
+    <img class="responsive" src="../images/setCellData.png" alt="setCellData" />
+
+    <p class="sub-cont">
+      In test class we can create dataprovider method to read data from excel
+      file from a particular sheet and row
+    </p>
+    <img class="responsive" src="../images/dataProv.png" alt="dataProvider" />
+    <img
+      class="responsive"
+      src="../images/dataProvtoTest.png"
+      alt="dataProvTest"
+    />
+    <div><a id="home" href="./logs.html">NextPage</a></div>
   </body>
 </html>
